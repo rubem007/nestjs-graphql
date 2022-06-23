@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type AuthorEntity {
-  id: String
+  id: String!
   name: String!
   email: String!
   phone: String
@@ -15,11 +15,17 @@ type Query {
 
 type Mutation {
   create(author: CreateAuthorDTO!): AuthorEntity!
+  update(id: String!, author: UpdateAuthorDto!): AuthorEntity!
 }
 
 input CreateAuthorDTO {
-  id: String
   name: String!
   email: String!
+  phone: String
+}
+
+input UpdateAuthorDto {
+  name: String
+  email: String
   phone: String
 }

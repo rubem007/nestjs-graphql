@@ -1,19 +1,9 @@
-import { Field, InputType } from '@nestjs/graphql';
+import { InputType, OmitType } from '@nestjs/graphql';
+import { AuthorEntity } from '../author.entity';
 
 @InputType()
-export class CreateAuthorDTO {
-  @Field(() => String, { nullable: true })
-  id: string;
-  
-  @Field(() => String)
-  name: string;
-
-  @Field(() => String)
-  email: string;
-
-  @Field({ nullable: true })
-  phone?: string;
-
-  /* @Field(() => [BookEntity])
-  books: ; */
-}
+export class CreateAuthorDTO extends OmitType(
+  AuthorEntity,
+  ['id'],
+  InputType,
+) {}

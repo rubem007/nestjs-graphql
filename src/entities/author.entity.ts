@@ -2,7 +2,7 @@ import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class AuthorEntity {
-  @Field(() => String, { nullable: true })
+  @Field(() => String)
   id: string;
 
   @Field(() => String)
