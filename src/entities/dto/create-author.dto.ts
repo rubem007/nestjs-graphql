@@ -1,10 +1,10 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, InputType } from '@nestjs/graphql';
 
-@ObjectType()
-export class AuthorEntity {
+@InputType()
+export class CreateAuthorDTO {
   @Field(() => String, { nullable: true })
   id: string;
-
+  
   @Field(() => String)
   name: string;
 
