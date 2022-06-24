@@ -1,4 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { BookEntity } from './book.entity';
 
 @ObjectType()
 export class AuthorEntity {
@@ -14,6 +15,6 @@ export class AuthorEntity {
   @Field({ nullable: true })
   phone?: string;
 
-  /* @Field(() => [BookEntity])
-  books: ; */
+  /* @Field(() => [BookEntity], { nullable: true })
+  books?: BookEntity[]; */
 }

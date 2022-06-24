@@ -9,13 +9,33 @@ type AuthorEntity {
   phone: String
 }
 
+type BookEntity {
+  id: String!
+  title: String!
+  description: String
+  bar_code: String!
+  published: Boolean!
+  created_at: DateTime!
+  updated_at: DateTime!
+  author_id: String!
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
 type Query {
-  findAll: [AuthorEntity!]!
+  findAllAuthor: [AuthorEntity!]!
+  findAllBooks: [BookEntity!]!
 }
 
 type Mutation {
-  create(author: CreateAuthorDTO!): AuthorEntity!
-  update(id: String!, author: UpdateAuthorDto!): AuthorEntity!
+  createAuthor(author: CreateAuthorDTO!): AuthorEntity!
+  updateAuthor(id: String!, author: UpdateAuthorDto!): AuthorEntity!
+  createBook(book: CreateBookDto!): BookEntity!
+  updateBook(id: String!, book: UpdateBookDto!): BookEntity!
+  deleteBook(id: String!): BookEntity!
 }
 
 input CreateAuthorDTO {
@@ -28,4 +48,20 @@ input UpdateAuthorDto {
   name: String
   email: String
   phone: String
+}
+
+input CreateBookDto {
+  title: String!
+  description: String
+  bar_code: String!
+  published: Boolean!
+  author_id: String!
+}
+
+input UpdateBookDto {
+  title: String
+  description: String
+  bar_code: String
+  published: Boolean
+  author_id: String
 }

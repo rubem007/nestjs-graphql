@@ -9,17 +9,19 @@ export class AuthorResolver {
   constructor(private readonly authorService: AuthorService) {}
 
   @Query(() => [AuthorEntity])
-  async findAll(): Promise<AuthorEntity[]> {
+  async findAllAuthor(): Promise<AuthorEntity[]> {
     return this.authorService.findAll();
   }
 
   @Mutation(() => AuthorEntity)
-  async create(@Args('author') author: CreateAuthorDTO): Promise<AuthorEntity> {
+  async createAuthor(
+    @Args('author') author: CreateAuthorDTO,
+  ): Promise<AuthorEntity> {
     return this.authorService.create(author);
   }
 
   @Mutation(() => AuthorEntity)
-  async update(
+  async updateAuthor(
     @Args('id') id: string,
     @Args('author') author: UpdateAuthorDto,
   ): Promise<AuthorEntity> {

@@ -20,7 +20,7 @@ model Author {
 model Book {
   id          String   @id @default(uuid())
   title       String
-  description String
+  description String?
   bar_code    String   @unique
   published   Boolean  @default(true)
   created_at  DateTime @default(now())

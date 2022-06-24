@@ -13,10 +13,6 @@ export class AuthorService {
       data,
     });
 
-    if (!author) {
-      throw new Error('Error');
-    }
-
     return author;
   }
 
@@ -32,7 +28,7 @@ export class AuthorService {
     });
 
     if (!authorExists) {
-      throw new Error('Book does not exists!');
+      throw new Error('Author does not exists!');
     }
 
     return await this.prisma.author.update({
