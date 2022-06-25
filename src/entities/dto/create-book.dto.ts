@@ -4,6 +4,6 @@ import { BookEntity } from '../book.entity';
 @InputType()
 export class CreateBookDto extends OmitType(
   BookEntity,
-  ['id', 'created_at', 'updated_at'],
+  ['id', 'created_at', 'updated_at', 'skip', 'take'],
   InputType,
 ) {}

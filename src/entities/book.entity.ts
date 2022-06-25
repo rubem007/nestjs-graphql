@@ -1,8 +1,9 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { GraphQLDateTime } from 'graphql-scalars';
+import { PaginationArgs } from './pagination.args';
 
 @ObjectType()
-export class BookEntity {
+export class BookEntity extends PaginationArgs {
   @Field(() => String)
   id: string;
 

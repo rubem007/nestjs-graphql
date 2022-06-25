@@ -4,6 +4,6 @@ import { AuthorEntity } from '../author.entity';
 @InputType()
 export class CreateAuthorDTO extends OmitType(
   AuthorEntity,
-  ['id'],
+  ['id', 'skip', 'take'],
   InputType,
 ) {}

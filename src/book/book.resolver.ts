@@ -2,6 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { BookEntity } from 'src/entities/book.entity';
 import { CreateBookDto } from 'src/entities/dto/create-book.dto';
 import { UpdateBookDto } from 'src/entities/dto/update-book.dto';
+import { PaginationArgs } from 'src/entities/pagination.args';
 import { BookService } from './book.service';
 
 @Resolver()
@@ -14,8 +15,8 @@ export class BookResolver {
   }
 
   @Query(() => [BookEntity])
-  async findAllBooks(): Promise<BookEntity[]> {
-    return this.bookService.findAll();
+  async findAllBooks(@Args() args: PaginationArgs): Promise<BookEntity[]> {
+    return this.bookService.findAll(args);
   }
 
   @Mutation(() => BookEntity)

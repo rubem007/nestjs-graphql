@@ -3,6 +3,7 @@ import { PrismaService } from 'src/database/PrismaService';
 import { AuthorEntity } from 'src/entities/author.entity';
 import { CreateAuthorDTO } from 'src/entities/dto/create-author.dto';
 import { UpdateAuthorDto } from 'src/entities/dto/update-author.dto';
+import { PaginationArgs } from 'src/entities/pagination.args';
 
 @Injectable()
 export class AuthorService {
@@ -16,8 +17,8 @@ export class AuthorService {
     return author;
   }
 
-  async findAll(): Promise<AuthorEntity[]> {
-    return this.prisma.author.findMany();
+  async findAll(args: PaginationArgs): Promise<AuthorEntity[]> {
+    return this.prisma.author.findMany({ skip: args.skip, take: args.take });
   }
 
   async update(id: string, data: UpdateAuthorDto): Promise<AuthorEntity> {
